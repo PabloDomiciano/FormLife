@@ -269,7 +269,7 @@
                 <p>Preencha o formulário abaixo e nossa equipe entrará em contato para agendar sua aula experimental
                     gratuita!</p>
 
-                <form class="contact-form">
+                <form id="contactForm" class="contact-form">
                     <div class="form-group">
                         <input type="text" id="name" name="name" required>
                         <label for="name">Nome Completo</label>
@@ -281,17 +281,17 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="tel" id="phone" name="phone" required>
-                        <label for="phone">Telefone</label>
+                        <input type="text" id="message" name="message" required>
+                        <label for="message">Mensagem</label>
                     </div>
 
                     <div class="form-group">
                         <select id="interest" name="interest" required>
                             <option value="" disabled selected></option>
-                            <option value="musculacao">Musculação</option>
-                            <option value="crossfit">CrossFit</option>
-                            <option value="pilates">Pilates</option>
-                            <option value="artes-marciais">Artes Marciais</option>
+                            <option value="basico">Plano Básico</option>
+                            <option value="completo">Plano Completo</option>
+                            <option value="premium">Plano Premium</option>
+                            <option value="aula-experimental">Agendar Aula Experimental</option>
                             <option value="outros">Outros</option>
                         </select>
                         <label for="interest">Principal Interesse</label>

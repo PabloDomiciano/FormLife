@@ -168,3 +168,46 @@ document.addEventListener("DOMContentLoaded", function () {
     link.classList.add("mobile-link");
   });
 });
+
+// Função para ler parâmetros da URL
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+  var results = regex.exec(location.search);
+  return results === null
+    ? ""
+    : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+// Quando o DOM estiver carregado
+document.addEventListener("DOMContentLoaded", function () {
+  // Manipular o envio do formulário
+  var contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Obter os valores do formulário
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var message = document.getElementById("message").value;
+      var interest =
+        document.getElementById("interest").options[
+          document.getElementById("interest").selectedIndex
+        ].text;
+
+      // Criar mensagem para WhatsApp
+      var whatsappMessage =
+        `Olá, Form Life! Meu nome é ${name}.\n\n` +
+        `E-mail: ${email}\n\n` +
+        `Mensagem: ${message}\n\n` +
+        `Principal interesse: ${interest}\n`;
+
+      // Codificar a mensagem para URL
+      var encodedMessage = encodeURIComponent(whatsappMessage);
+
+      // Redirecionar para WhatsApp
+      window.location.href = `https://wa.me/5544999194205?text=${encodedMessage}`;
+    });
+  }
+});
